@@ -1,9 +1,9 @@
 <p>Login page</p>
 <label for="">Email:</label>
-<input type="text" placeholder="Insira o email:">
+<input  type="text" [(ngModel)]= "inputDoemail"  #InputEmail placeholder="Insira o email:">
 <label for="">Senha:</label>
-<input type="text" placeholder="Insira a senha:">
-<button>Entrar</button>
-<button>Esqueci a senha</button>
-<button>Cadastrar-me</button>
+<input type="text" [(ngModel)]= "inputDaSenha" #InputSenha placeholder="Insira a senha:">
+<button (click)="verifica()">Entrar</button>
+<button (click) = "redefineSenha()">Esqueci a senha</button>
+<button (click)="Cadastrar()">Cadastrar-me</button>
 
