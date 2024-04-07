@@ -27,7 +27,9 @@ senha:"a1b2c4d4"
 
 
 ngOnInit() {
-  const usuariosString = JSON.stringify(this.usuarios);
+  const usuarioLista = JSON.parse(localStorage.getItem("listaUsuarios") || '[]');
+  usuarioLista.push(this.usuarios);
+  const usuariosString = JSON.stringify(usuarioLista);
   localStorage.setItem("listaUsuarios", usuariosString);
 }
 
