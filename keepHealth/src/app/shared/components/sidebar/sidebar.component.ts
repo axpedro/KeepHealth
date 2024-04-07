@@ -12,6 +12,18 @@ export class SidebarComponent {
   constructor(private router: Router){
 
   }
+  Inicio(){
+    this.router.navigate(['/home']);
+  }
+  Dietas(){
+    this.router.navigate(['/diet']);
+  }
+  Perfil(){
+    this.router.navigate(['/profile']);
+  }
+
+
+
 
   ngOnInit() {
   const  AlimentosParse = JSON.parse(localStorage.getItem("listaAlimentos") || '[]');
