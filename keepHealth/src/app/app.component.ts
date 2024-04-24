@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { CmTometersPipe } from './cm-tometers.pipe';
+import { DietComponent } from './diet/diet.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent,SidebarComponent,CmTometersPipe],
+  imports: [RouterOutlet, LoginComponent,SidebarComponent,CmTometersPipe, DietComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
