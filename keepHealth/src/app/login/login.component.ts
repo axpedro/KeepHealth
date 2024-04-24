@@ -13,6 +13,7 @@ import { CadastroComponent } from '../cadastro/cadastro.component';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+  usuarioListaObj : any
   constructor(private router: Router) {
     
    }
@@ -27,10 +28,14 @@ senha:"a1b2c4d4"
 
 
 ngOnInit() {
-  const usuarioLista = JSON.parse(localStorage.getItem("listaUsuarios") || '[]');
-  usuarioLista.push(this.usuarios);
-  const usuariosString = JSON.stringify(usuarioLista);
-  localStorage.setItem("listaUsuarios", usuariosString);
+  
+      
+  const localData = localStorage.getItem("listaUsuarios");
+  if(localData!=null){
+  this.usuarioListaObj = JSON.parse(localData);
+  
+  }
+  
 }
 
 verifica(){

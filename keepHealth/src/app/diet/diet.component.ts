@@ -1,6 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component, NgModule } from '@angular/core';
 import { FormsModule, NgForm, NgModel } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diet',
@@ -10,6 +11,7 @@ import { FormsModule, NgForm, NgModel } from '@angular/forms';
   styleUrl: './diet.component.css'
 })
 export class DietComponent {
+constructor(private router : Router){}
 listaAlimentosrec : any;
 listaAlimentosCompleta : [] | undefined;
 nomePesquisa : any;
@@ -20,15 +22,23 @@ ngOnInit(){
   const localData = localStorage.getItem('listaAlimentos');
   if(localData != null){
     this.listaAlimentosrec = JSON.parse(localData);
-    console.log(this.listaAlimentosrec);
+    
     //this.listaAlimentosCompleta = this.listaAlimentosrec;
 
 
 }
 
 
+
 }
 
+
+detalhes(id : any){
+  this.router.navigate(['/diet-detail', id]);
+  
+
+
+}
 
 filtraPct(nomePesquisa: string) {
   this.nomePesquisa = nomePesquisa; // Update search term
@@ -45,3 +55,5 @@ filtraPct(nomePesquisa: string) {
 
 
 }
+
+
