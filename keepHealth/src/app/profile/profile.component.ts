@@ -1,14 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CmTometersPipe } from '../cm-tometers.pipe';
+import { BuscaCepService } from '../services/busca-cep.service';
+import { RouterModule } from '@angular/router';
+import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CmTometersPipe],
+  imports: [CmTometersPipe, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
   templateUrl: './profile.component.html',
-  styleUrl: './profile.component.css'
+  styleUrl: './profile.component.css',
+  providers: [BuscaCepService]
 })
 export class ProfileComponent {
+  constructor(private buscaCep: BuscaCepService, router: RouterModule) {}
+  consultaCep(valor: string, form: any) {
+    this.buscaCep.get(valor).subscribe((dados) => this.cepData(dados, form));
+  }
+
+  cepData(dados: any, form: any) {
+    console.log(dados);
+    this.AddressForm.patchValue({
+      street: dados.logradouro,
+      city: dados.localidade,
+      state: dados.uf,
+      neighborhood: dados.bairro,
+      complement: dados.complemento,
+    });
+  }
+  AddressForm: FormGroup = new FormGroup({
+    street: new FormControl(''),
+    city: new FormControl(''),
+    state: new FormControl(''),
+    zip: new FormControl(''),
+    //number: new FormControl(''),
+    complement: new FormControl(''),
+    neighborhood: new FormControl(''),
+    //reference: new FormControl(''),
+  });
+
+
+
+
+
   listaUsuarioLogado : {} | undefined;
 nome = '';
 email = '';
@@ -39,17 +76,14 @@ ngOnInit() {
 
       } else {
         alert('Sem usuário cadastrado')
-        const listaUsuarioLogado = [];
+        //const listaUsuarioLogado = [];
   
     
-   
-    
-  
- 
- 
-
-
 }
+
+
+
+
 
 
 }}

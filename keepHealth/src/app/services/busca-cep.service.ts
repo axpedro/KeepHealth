@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class BuscaCepService {
 
 
 
-  get(cep : string){
+  get(cep : string): Observable<any>{
 
     const url = `https://viacep.com.br/ws/${cep}/json`; 
     return this.httpCliente.get(url); 

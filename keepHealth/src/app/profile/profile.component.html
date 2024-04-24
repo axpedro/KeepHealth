@@ -5,11 +5,21 @@
 <div>Usuario: {{usuario}}</div>
 <div>Altura:{{ altura | cmTometers }}</div>
 
-<div>
-<label for="">CEP: </label>
-<input type="text">
+<form [formGroup]="AddressForm" >
+    <div class="address">
+        <label for="zip" >CEP: </label> <button (click)="consultaCep(AddressForm.get('zip')?.value, AddressForm)">Pesquisar</button>
+        <input type="text" id="zip" formControlName="zip"  class="form-control" (click)="consultaCep(AddressForm.get('zip')?.value, AddressForm)">
+        <label for="street">Rua: </label>
+        <input type="text" id="street" formControlName="street" class="form-control">
+        <label for="city">Cidade: </label>
+        <input type="text" id="city" formControlName="city" class="form-control">
+        <label for="state">Estado: </label>
+        <input type="text" id="state" formControlName="state" class="form-control">
+        <label for="complement">Complemento: </label>
+        <input type="text" id="complement" formControlName="complement" class="form-control">
+        <label for="neighborhood">Bairro: </label>
+        <input type="text" id="neighborhood" formControlName="neighborhood" class="form-control">
+       
 
-</div>
-<button>Pesquisar</button>
-
-
+      </div>
+</form>
