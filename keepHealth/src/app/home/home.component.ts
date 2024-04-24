@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   visible: boolean = false;
   date: Date | undefined;
   listaUsuarios: any;
-
+  listarecuperada: any[] | undefined;
   atividades: Atividade[] | undefined;
   listaAtividades:
     | [
@@ -48,14 +48,6 @@ export class HomeComponent implements OnInit {
   atividadeSelecionada: Atividade | undefined;
 
   ngOnInit() {
-    const localData = localStorage.getItem('listaUsuarios');
-    if (localData != null) {
-      this.listaUsuarios = JSON.parse(localData);
-      //console.log(this.listaUsuarios)
-
-      //this.listaAlimentosCompleta = this.listaAlimentosrec;
-    }
-
     this.atividades = [
       { name: 'Correr', code: 'correr' },
       { name: 'Academia', code: 'academia' },
@@ -63,18 +55,31 @@ export class HomeComponent implements OnInit {
       { name: 'Caminhada', code: 'caminhada' },
       { name: 'Volei', code: 'volei' },
     ];
+
+    this.listarecuperada = JSON.parse(
+      localStorage.getItem('atividades') || '[]'
+    );
+    console.log('lista rec: ' + this.listarecuperada);
+    console.log('lista atividades' + this.listaAtividades);
   }
 
   showDialog() {
     this.visible = true;
   }
+
   salvarLocal() {
-    console.log(this.atividadeSelecionada);
     const listaAtividadesObj = {
       ativ: this.atividadeSelecionada?.code,
       data: this.date,
     };
-    const ListaAtividadesString = JSON.stringify(listaAtividadesObj);
+
+    // Verifica se listarecuperada é um array
+    if (!Array.isArray(this.listarecuperada)) {
+      this.listarecuperada = [];
+    }
+
+    this.listarecuperada.push(listaAtividadesObj);
+    const ListaAtividadesString = JSON.stringify(this.listarecuperada);
     localStorage.setItem('atividades', ListaAtividadesString);
   }
 }

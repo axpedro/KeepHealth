@@ -1,35 +1,44 @@
 <p>Bem vindo</p>
 
-<!-- <button type="button" pButton pRipple (click)="show()" label="Show" class="p-button-success"></button> -->
-
-<div class="card flex justify-content-center">
-  <p-button
-    (click)="showDialog()"
-    icon="pi pi-external-link"
-    label="Adicionar atividade"
-  ></p-button>
-  <p-dialog
-    header="Adicionar Atividade"
-    [(visible)]="visible"
-    [style]="{ width: '40vw', height: '80vh' }"
-  >
+<ul>
+  <li class="card" *ngFor="let atividade of listarecuperada">
     <p>
-      <p-dropdown
-        [options]="atividades"
-        [(ngModel)]="atividadeSelecionada"
-        optionLabel="name"
-        [showClear]="true"
-        placeholder="Selecione a atividade"
-      ></p-dropdown>
+      <span>{{ atividade.ativ }}</span>
     </p>
-    <div class="card flex justify-content-center">
-      <p-calendar [(ngModel)]="date" dateFormat="dd.mm.yy"></p-calendar>
-    </div>
+    <p>
+      <span>{{ atividade.data }}</span>
+    </p>
+  </li>
+
+  <div class="card flex justify-content-center">
     <p-button
-      [style]="{ padding: '10px', margin: '10px' }"
-      (click)="salvarLocal()"
+      (click)="showDialog()"
       icon="pi pi-external-link"
-      label="Salvar"
+      label="Adicionar atividade"
     ></p-button>
-  </p-dialog>
-</div>
+    <p-dialog
+      header="Adicionar Atividade"
+      [(visible)]="visible"
+      [style]="{ width: '40vw', height: '80vh' }"
+    >
+      <p>
+        <p-dropdown
+          [options]="atividades"
+          [(ngModel)]="atividadeSelecionada"
+          optionLabel="name"
+          [showClear]="true"
+          placeholder="Selecione a atividade"
+        ></p-dropdown>
+      </p>
+      <div class="card flex justify-content-center">
+        <p-calendar [(ngModel)]="date" dateFormat="dd.mm.yy"></p-calendar>
+      </div>
+      <p-button
+        [style]="{ padding: '10px', margin: '10px' }"
+        (click)="salvarLocal()"
+        icon="pi pi-external-link"
+        label="Salvar"
+      ></p-button>
+    </p-dialog>
+  </div>
+</ul>
