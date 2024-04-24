@@ -1,11 +1,13 @@
-
 /* Order */
 @layer reset, primeng;
 
 /* Reset CSS */
 @layer reset {
-    button,
-    input {
-        /* CSS to Reset */
-    }
+  button,
+  input {
+    /* CSS to Reset */
+  }
+}
+.card flex justify-content-center {
+  flex-direction: row;
 }
