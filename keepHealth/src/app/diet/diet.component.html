@@ -1,1 +1,14 @@
-<p>diet works!</p>
+<div class="container">
+  <div class="busca">
+    <label for="">Busca alimento:</label>
+    <input type="text" [(ngModel)]="nomePesquisa">
+    <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
+  </div>
+  <ul>
+    <li class="card" *ngFor="let alimento of listaAlimentosrec">
+      <p><span>{{ alimento.name }}</span></p>
+      <p><span>{{ alimento.description }}</span></p>
+      <p><span>{{ alimento.imageLink }}</span></p>
+    </li>
+  </ul>
+</div>
