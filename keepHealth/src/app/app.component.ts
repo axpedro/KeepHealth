@@ -6,11 +6,13 @@ import { CmTometersPipe } from './cm-tometers.pipe';
 import { DietComponent } from './diet/diet.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { DietDetailComponent } from './diet/diet-detail/diet-detail.component';
+//import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LoginComponent,SidebarComponent,CmTometersPipe, DietComponent, HeaderComponent, DietDetailComponent],
+  imports: [RouterOutlet, LoginComponent,SidebarComponent,CmTometersPipe, DietComponent, HeaderComponent, DietDetailComponent  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -4,13 +4,12 @@ import { BuscaCepService } from '../services/busca-cep.service';
 import { RouterModule } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, NgModel, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CmTometersPipe, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule],
+  imports: [CmTometersPipe, FormsModule, ReactiveFormsModule, HttpClientModule, RouterModule, CommonModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',
   providers: [BuscaCepService]
@@ -51,7 +50,7 @@ nome = '';
 email = '';
 peso ='';
 altura='120';
-usuario='';
+//usuario='';
 idade = 0;
 
 
@@ -62,7 +61,7 @@ ngOnInit() {
  
       if (usuarioLista != null) {
         const listaUsuarioLogado = JSON.parse(usuarioLista);
-        this.nome = listaUsuarioLogado[0][0].usuario || '';
+        //this.nome = listaUsuarioLogado[0][0].usuario || '';
         this.email = listaUsuarioLogado[0][0].email || '';
         const datanascimento = listaUsuarioLogado[0][0].nasc || ''; //pega a data
         const dataNascimentoDate = new Date(Date.parse(datanascimento)); //transforma a data num "date"
