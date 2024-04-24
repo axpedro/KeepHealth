@@ -5,7 +5,8 @@
     <button (click)="filtraPct(nomePesquisa)">Pesquisar</button>
   </div>
   <ul>
-    <li class="card" *ngFor="let alimento of listaAlimentosrec">
+    <li class="card" *ngFor="let alimento of listaAlimentosrec" (click)="detalhes(alimento.id)">
+      
       <p><span>{{ alimento.name }}</span></p>
       <p><span>{{ alimento.description }}</span></p>
       <p><span>{{ alimento.imageLink }}</span></p>

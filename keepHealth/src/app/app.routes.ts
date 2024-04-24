@@ -4,7 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
 import { SidebarComponent } from './shared/components/sidebar/sidebar.component';
 import { DietComponent } from './diet/diet.component';
-import { DietDetailComponent } from './diet-detail/diet-detail.component';
+import { DietDetailComponent } from './diet/diet-detail/diet-detail.component';
 import { ProfileComponent } from './profile/profile.component';
 
 export const routes: Routes = [
@@ -22,10 +22,16 @@ component: LoginComponent
 },
 {
     path:'diet',
-    component: DietComponent
+    component: DietComponent,
+    
+
+    
 },{
     path:'diet-detail',
-    component: DietDetailComponent
+    children:[
+        {path: ':id' , component:DietDetailComponent} 
+    ]
+    
 },{
     path:'profile',
     component: ProfileComponent

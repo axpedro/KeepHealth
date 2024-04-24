@@ -1,0 +1,20 @@
+
+ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 16px;
+    flex-direction: column;
+    border-style: groove;
+    
+  
+  
+}
+span {
+   
+    text-align: center;
+    justify-content: center;
+    border: 2px;
+   
+    
+  }

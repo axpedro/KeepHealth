@@ -28,12 +28,12 @@ ConfirmaSenha:''
 
   Cadastro(){
     const usuarioLista = JSON.parse(localStorage.getItem("listaUsuarios") || '[]');
-    const usuariosString = [{
+    const usuariosString = {
       usuario: this.login.nome,
       senha:this.login.senha,
       email:this.login.email,
       nasc:this.login.dataNasc
-      }]
+      }
       usuarioLista.push(usuariosString);
     if(this.login.senha !== this.login.ConfirmaSenha){
        alert('as senhas devem ser iguais');
